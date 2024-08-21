@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { backend } from '../backendlink'
 
 const Signup = () => {
 
@@ -14,7 +15,7 @@ const Signup = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://localhost:5000/api/user/register', userDetails);
+    const response = await axios.post(`${backend}/api/user/register`, userDetails);
     const data = await response.data;
     console.log(data);
     if (data.success) {

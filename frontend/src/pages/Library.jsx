@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext';
+import { backend } from '../backendlink';
 
 const Library = () => {
     const [songs, setSongs] = useState([]);
@@ -8,7 +9,7 @@ const Library = () => {
 
     const fetchSongs = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/songs')
+            const response = await axios.get(`${backend}/api/songs`)
             const data = await response.data;
             setSongs(data);
         } catch (error) {

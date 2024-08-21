@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
+import { backend } from '../backendlink';
 
 const Playlists = () => {
     const [playlists, setPlaylists] = useState([]);
@@ -9,7 +10,7 @@ const Playlists = () => {
 
     const fetchPlaylists = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/playlist/${user.id}`);
+            const response = await axios.get(`${backend}/api/playlist/${user.id}`);
             const data = await response.data;
             setPlaylists(data);
         } catch (error) {

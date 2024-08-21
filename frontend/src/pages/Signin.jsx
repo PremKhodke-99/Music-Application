@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext'
 import { jwtDecode } from "jwt-decode";
+import { backend } from '../backendlink';
 
 const Signin = () => {
 
@@ -16,7 +17,7 @@ const Signin = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://localhost:5000/api/user/login', userDetails);
+    const response = await axios.post(`${backend}/api/user/login`, userDetails);
     const data = await response.data;
     if (data.success) {
       localStorage.setItem('user', JSON.stringify(data.token));
